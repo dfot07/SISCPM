@@ -1,0 +1,31 @@
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for [@request_property, @appearer] do |f|
+        -if @appearer.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@appearer.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@appearer.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12
+                  .input-field.col.s12
+                    =f.text_field :last_name
+                    %label{for: "#{:last_name}", class: "active"} Compareciente(s):
+                  .input-field.col.s12 
+                    =f.text_field :civil_status
+                    %label{for: "#{:civil_status}", class: "active"} Estado Civil:
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", @request_property, class: "btn btn-fb"

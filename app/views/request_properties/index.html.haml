@@ -1,0 +1,42 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Solicitudes de Propiedad
+        .col.s12.l12
+          = link_to new_request_property_path, class: "btn btn-fb" do
+            <i class="medium material-icons left">note_add</i>Nueva Solicitud
+      .row
+        .col.s6.l12
+          %table.striped.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Usuario
+                %th CERTIFICADO
+                %th TRÁMITE
+                %th OBSERVACIÓN
+                %th # SOLICITUD
+                %th # CERTIFICADO
+                %th
+                %th
+                %th
+
+            %tbody
+              - @request_properties.each do |request_property|
+                %tr
+                  %td= request_property.user.email
+                  %td= request_property.certificate
+                  %td= request_property.request_certificate
+                  %td= request_property.comment
+                  %td= "#{request_property.sequence_request} - #{request_property.date_sequence}"
+                  %td= "#{request_property.sequence_certificate} - #{request_property.date_certificate}"
+                  %td= link_to 'Show', request_property
+                  %td= link_to 'Edit', edit_request_property_path(request_property)
+                  %td
+                    = link_to request_property, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+=render "layouts/footer"

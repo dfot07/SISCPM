@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @request_commercial.user
+%p
+  %b Certificate:
+  = @request_commercial.certificate
+%p
+  %b Request certificate:
+  = @request_commercial.request_certificate
+%p
+  %b Comment:
+  = @request_commercial.comment
+%p
+  %b Sequence request:
+  = @request_commercial.sequence_request
+%p
+  %b Sequence certificate:
+  = @request_commercial.sequence_certificate
+%p
+  %b Date sequence:
+  = @request_commercial.date_sequence
+%p
+  %b Date certificate:
+  = @request_commercial.date_certificate
+%p
+  %b Other type:
+  = @request_commercial.other_type
+%p
+  %b Other certificate:
+  = @request_commercial.other_certificate
+
+= link_to 'Edit', edit_request_commercial_path(@request_commercial)
+\|
+= link_to 'Back', request_commercials_path

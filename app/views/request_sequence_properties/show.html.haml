@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @request_sequence_property.user
+%p
+  %b Sequence:
+  = @request_sequence_property.sequence
+%p
+  %b Date sequence:
+  = @request_sequence_property.date_sequence
+
+= link_to 'Edit', edit_request_sequence_property_path(@request_sequence_property)
+\|
+= link_to 'Back', request_sequence_properties_path

@@ -1,0 +1,16 @@
+= form_for @property_certificate_sequence do |f|
+  - if @property_certificate_sequence.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@property_certificate_sequence.errors.count, "error")} prohibited this property_certificate_sequence from being saved:"
+      %ul
+        - @property_certificate_sequence.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :sequence
+    = f.number_field :sequence
+  .field
+    = f.label :date_sequence
+    = f.number_field :date_sequence
+  .actions
+    = f.submit 'Save'

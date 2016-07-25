@@ -1,0 +1,1 @@
+json.extract! @request_commercial, :id, :user_id, :certificate, :request_certificate, :comment, :sequence_request, :sequence_certificate, :date_sequence, :date_certificate, :other_type, :other_certificate, :created_at, :updated_at

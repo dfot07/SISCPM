@@ -1,0 +1,2 @@
+module PropertyCertificateSequencesHelper
+end

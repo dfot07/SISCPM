@@ -1,0 +1,17 @@
+= form_for @request_sequence_property do |f|
+  - if @request_sequence_property.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@request_sequence_property.errors.count, "error")} prohibited this request_sequence_property from being saved:"
+      %ul
+        - @request_sequence_property.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  .field
+    = f.label :sequence
+    = f.number_field :sequence
+  .field
+    = f.label :date_sequence
+    = f.number_field :date_sequence
+  .actions
+    = f.submit 'Save'

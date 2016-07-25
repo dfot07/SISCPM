@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @property_certificate_sequence.user
+%p
+  %b Sequence:
+  = @property_certificate_sequence.sequence
+%p
+  %b Date sequence:
+  = @property_certificate_sequence.date_sequence
+
+= link_to 'Edit', edit_property_certificate_sequence_path(@property_certificate_sequence)
+\|
+= link_to 'Back', property_certificate_sequences_path

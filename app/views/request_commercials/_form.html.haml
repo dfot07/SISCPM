@@ -1,0 +1,17 @@
+= simple_form_for(@request_commercial) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :certificate
+    = f.input :request_certificate
+    = f.input :comment
+    = f.input :sequence_request
+    = f.input :sequence_certificate
+    = f.input :date_sequence
+    = f.input :date_certificate
+    = f.input :other_type
+    = f.input :other_certificate
+
+  .form-actions
+    = f.button :submit

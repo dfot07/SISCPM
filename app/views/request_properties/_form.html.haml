@@ -1,0 +1,224 @@
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for @request_property do |f|
+        -if @request_property.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@request_property.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@request_property.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12.l12
+                  .input-field.col.s12.l12
+                    %br
+                    %label{for: "#{:certificate}"} Certificado de:
+                    %br
+                    -if @request_property.certificate
+                      -if @request_property.certificate == "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"
+                        %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                          %option{value: "", disabled:""} Seleccionar...
+                          %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO", selected:""} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                          %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD"} CONSTAR EN EL INDICE DE PROPIEDAD
+                          %option{value: "ACTUALIZACION DEL CANTON CAÑAR"} ACTUALIZACION DEL CANTON CAÑAR
+                          %option{value: "NO POSEER BIENES"} NO POSEER BIENES
+                          %option{value: "OTROS"} OTROS
+                      -else
+                        -if @request_property.certificate == "CONSTAR EN EL INDICE DE PROPIEDAD"
+                          %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                            %option{value: "", disabled:""} Seleccionar...
+                            %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                            %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD", selected:""} CONSTAR EN EL INDICE DE PROPIEDAD
+                            %option{value: "ACTUALIZACION DEL CANTON CAÑAR"} ACTUALIZACION DEL CANTON CAÑAR
+                            %option{value: "NO POSEER BIENES"} NO POSEER BIENES
+                            %option{value: "OTROS"} OTROS
+                        -else
+                          -if @request_property.certificate == "ACTUALIZACION DEL CANTON CAÑAR"
+                            %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                              %option{value: "", disabled:""} Seleccionar...
+                              %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                              %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD"} CONSTAR EN EL INDICE DE PROPIEDAD
+                              %option{value: "ACTUALIZACION DEL CANTON CAÑAR", selected:""} ACTUALIZACION DEL CANTON CAÑAR
+                              %option{value: "NO POSEER BIENES"} NO POSEER BIENES
+                              %option{value: "OTROS"} OTROS
+                          -else
+                            -if @request_property.certificate == "NO POSEER BIENES"
+                              %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                                %option{value: "", disabled:""} Seleccionar...
+                                %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                                %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD"} CONSTAR EN EL INDICE DE PROPIEDAD
+                                %option{value: "ACTUALIZACION DEL CANTON CAÑAR"} ACTUALIZACION DEL CANTON CAÑAR
+                                %option{value: "NO POSEER BIENES", selected:""} NO POSEER BIENES
+                                %option{value: "OTROS"} OTROS
+                            -else 
+                              -if @request_property.certificate == "OTROS"
+                                %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                                  %option{value: "", disabled:""} Seleccionar...
+                                  %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                                  %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD"} CONSTAR EN EL INDICE DE PROPIEDAD
+                                  %option{value: "ACTUALIZACION DEL CANTON CAÑAR"} ACTUALIZACION DEL CANTON CAÑAR
+                                  %option{value: "NO POSEER BIENES"} NO POSEER BIENES
+                                  %option{value: "OTROS", selected:""} OTROS
+                    -else
+                      %select.browser-default{name: "request_property[certificate]", id:"request_property_certificate"}
+                        %option{value: "", disabled:"", selected:""} Seleccionar...
+                        %option{value: "PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO"} PROPIEDAD GRAVAMEN Y LIMITACIONES DE DOMINIO
+                        %option{value: "CONSTAR EN EL INDICE DE PROPIEDAD"} CONSTAR EN EL INDICE DE PROPIEDAD
+                        %option{value: "ACTUALIZACION DEL CANTON CAÑAR"} ACTUALIZACION DEL CANTON CAÑAR
+                        %option{value: "NO POSEER BIENES"} NO POSEER BIENES
+                        %option{value: "OTROS"} OTROS
+                  .input-field.col.s12.l12
+                    =f.text_field :other_type
+                    %label{for: "#{:other_type}", class: "active"} (Especificar si seleccionó la opción OTROS):
+                  .input-field.col.s12.l12
+                    %br
+                    %label{for: "#{:request_certificate}"} Certificado requerido para:
+                    %br
+                    -if @request_property.request_certificate
+                      -if @request_property.request_certificate == "CATASTRO"
+                        %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                          %option{value: "", disabled:""} Seleccionar...
+                          %option{value: "CATASTRO", selected:""} CATASTRO
+                          %option{value: "COMPRAR"} COMPRAR
+                          %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                          %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                          %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                          %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                          %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                          %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                          %option{value: "OTROS"} OTROS
+                      -else
+                        -if @request_property.request_certificate == "COMPRAR"
+                          %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                            %option{value: "", disabled:""} Seleccionar...
+                            %option{value: "CATASTRO"} CATASTRO
+                            %option{value: "COMPRAR", selected:""} COMPRAR
+                            %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                            %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                            %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                            %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                            %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                            %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                            %option{value: "OTROS"} OTROS
+                        -else
+                          -if @request_property.request_certificate == "DECLARATORIA DE PROPIEDAD HORIZONTAL"
+                            %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                              %option{value: "", disabled:""} Seleccionar...
+                              %option{value: "CATASTRO"} CATASTRO
+                              %option{value: "COMPRAR"} COMPRAR
+                              %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL", selected:""} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                              %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                              %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                              %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                              %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                              %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                              %option{value: "OTROS"} OTROS
+                          -else
+                            -if @request_property.request_certificate == "NEGOCIACION BIEN INMUEBLE"
+                              %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                %option{value: "", disabled:""} Seleccionar...
+                                %option{value: "CATASTRO"} CATASTRO
+                                %option{value: "COMPRAR"} COMPRAR
+                                %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                %option{value: "NEGOCIACION BIEN INMUEBLE", selected:""} NEGOCIACION BIEN INMUEBLE
+                                %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                                %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                                %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                                %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                                %option{value: "OTROS"} OTROS
+                            -else
+                              -if @request_property.request_certificate == "REALIZAR ACLARATORIA"
+                                %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                  %option{value: "", disabled:""} Seleccionar...
+                                  %option{value: "CATASTRO"} CATASTRO
+                                  %option{value: "COMPRAR"} COMPRAR
+                                  %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                  %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                                  %option{value: "REALIZAR ACLARATORIA", selected:""} REALIZAR ACLARATORIA
+                                  %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                                  %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                                  %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                                  %option{value: "OTROS"} OTROS
+                              -else
+                                -if @request_property.request_certificate == "SOLICITAR EMBARGO"
+                                  %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                    %option{value: "", disabled:""} Seleccionar...
+                                    %option{value: "CATASTRO"} CATASTRO
+                                    %option{value: "COMPRAR"} COMPRAR
+                                    %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                    %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                                    %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                                    %option{value: "SOLICITAR EMBARGO", selected:""} SOLICITAR EMBARGO
+                                    %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                                    %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                                    %option{value: "OTROS"} OTROS
+                                -else
+                                  -if @request_property.request_certificate == "TRAMITE JUDICIAL"
+                                    %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                      %option{value: "", disabled:""} Seleccionar...
+                                      %option{value: "CATASTRO"} CATASTRO
+                                      %option{value: "COMPRAR"} COMPRAR
+                                      %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                      %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                                      %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                                      %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                                      %option{value: "TRAMITE JUDICIAL", selected:""} TRAMITE JUDICIAL
+                                      %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                                      %option{value: "OTROS"} OTROS
+                                  -else
+                                    -if @request_property.request_certificate == "TRANSFERENCIA DE DOMINIO"
+                                      %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                        %option{value: "", disabled:""} Seleccionar...
+                                        %option{value: "CATASTRO"} CATASTRO
+                                        %option{value: "COMPRAR"} COMPRAR
+                                        %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                        %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                                        %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                                        %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                                        %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                                        %option{value: "TRANSFERENCIA DE DOMINIO", selected:""} TRANSFERENCIA DE DOMINIO
+                                        %option{value: "OTROS"} OTROS
+                                    -else
+                                      -if @request_property.request_certificate == "OTROS"
+                                        %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                                          %option{value: "", disabled:""} Seleccionar...
+                                          %option{value: "CATASTRO"} CATASTRO
+                                          %option{value: "COMPRAR"} COMPRAR
+                                          %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                                          %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                                          %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                                          %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                                          %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                                          %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                                          %option{value: "OTROS", selected:""} OTROS
+                    -else
+                      %select.browser-default{name: "request_property[request_certificate]", id:"request_property_request_certificate"}
+                        %option{value: "", disabled:"", selected:""} Seleccionar...
+                        %option{value: "CATASTRO"} CATASTRO
+                        %option{value: "COMPRAR"} COMPRAR
+                        %option{value: "DECLARATORIA DE PROPIEDAD HORIZONTAL"} DECLARATORIA DE PROPIEDAD HORIZONTAL
+                        %option{value: "NEGOCIACION BIEN INMUEBLE"} NEGOCIACION BIEN INMUEBLE
+                        %option{value: "REALIZAR ACLARATORIA"} REALIZAR ACLARATORIA
+                        %option{value: "SOLICITAR EMBARGO"} SOLICITAR EMBARGO
+                        %option{value: "TRAMITE JUDICIAL"} TRAMITE JUDICIAL
+                        %option{value: "TRANSFERENCIA DE DOMINIO"} TRANSFERENCIA DE DOMINIO
+                        %option{value: "OTROS"} OTROS        
+                  .input-field.col.s12.l12
+                    =f.text_field :other_certificate
+                    %label{for: "#{:other_certificate}", class: "active"} (Especificar si seleccionó la opción OTROS):
+                  .input-field.col.s12.l12
+                    =f.text_field :comment
+                    %label{for: "#{:comment}", class: "active"} Observación:
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", root_path, class: "btn btn-fb"

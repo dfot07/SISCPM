@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @appearer.user
+%p
+  %b Request property:
+  = @appearer.request_property
+%p
+  %b Last name:
+  = @appearer.last_name
+%p
+  %b Civil status:
+  = @appearer.civil_status
+
+= link_to 'Edit', edit_appearer_path(@appearer)
+\|
+= link_to 'Back', appearers_path

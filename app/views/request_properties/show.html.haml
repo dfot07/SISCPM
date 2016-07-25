@@ -1,0 +1,125 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Solicitud No.- #{@request_property.sequence_request}
+            %table.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Usuario
+                  %th CERTIFICADO
+                  %th TRÁMITE
+                  %th OBSERVACIÓN
+                  %th # SOLICITUD
+                  %th # CERTIFICADO
+                  %th
+                  %th
+              %tbody
+                %tr
+                  %td= @request_property.user.email
+                  %td= @request_property.certificate
+                  %td= @request_property.request_certificate
+                  %td= @request_property.comment
+                  %td= "#{@request_property.sequence_request} - #{@request_property.date_sequence}"
+                  %td= "#{@request_property.sequence_certificate} - #{@request_property.date_certificate}"
+                  %td= link_to 'Edit', edit_request_property_path(@request_property)
+                  %td
+                    = link_to @request_property, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+  .row
+    .col.s12
+      %ul
+        %li.col.s2
+          = link_to "Regresar", root_path, class: "btn btn-ap"
+        %li.col.s3
+          = link_to 'Propiedad', new_request_property_property_path(@request_property), class: "btn btn-ap"
+        %li.col.s3
+          = link_to 'Compareciente', new_request_property_appearer_path(@request_property), class: "btn btn-ap"
+        %li.col.s3
+          = link_to 'Solicitante', new_request_property_petitioner_path(@request_property), class: "btn btn-ap"
+        %li.col.s1
+          = link_to print_request_property_path(@request_property), class: "btn btn-ap" do
+            <i class="small material-icons center">print</i>
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Datos Propiedad
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Inscripción
+                  %th Repertorio
+                  %th Fecha de Inscripción
+                  %th
+                  %th
+
+              %tbody
+                -@request_property.property.each do |property|
+                  %tr
+                    %td= property.register
+                    %td= property.repertory
+                    %td= property.date_register
+                    %td= link_to 'Editar', edit_request_property_property_path(@request_property, property.id)
+                    %td= link_to 'Eliminar', request_property_property_path(@request_property, property.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Datos Comparecientes
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Compareciente(s)
+                  %th Estado Civil
+                  %th
+                  %th
+
+              %tbody
+                -@request_property.appearer.each do |appearer|
+                  %tr
+                    %td= appearer.last_name
+                    %td= appearer.civil_status
+                    %td= link_to 'Editar', edit_request_property_appearer_path(@request_property, appearer.id)
+                    %td= link_to 'Eliminar', request_property_appearer_path(@request_property, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Datos Solicitante
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Apellidos
+                  %th Nombres
+                  %th Cédula
+                  %th Estado Civil
+                  %th Dirección
+                  %th Teléfono
+                  %th Email
+                  %th Cód. Infodigital
+                  %th
+                  %th
+
+              %tbody
+                -@request_property.petitioner.each do |petitioner|
+                  %tr
+                    %td= petitioner.last_name
+                    %td= petitioner.name
+                    %td= petitioner.document
+                    %td= petitioner.civil_status
+                    %td= petitioner.address
+                    %td= petitioner.phone
+                    %td= petitioner.email
+                    %td= petitioner.infodigital
+                    %td= link_to 'Editar', edit_request_property_appearer_path(@request_property, petitioner.id)
+                    %td= link_to 'Eliminar', request_property_appearer_path(@request_property, petitioner.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+=render "layouts/footer"

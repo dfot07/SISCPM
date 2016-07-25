@@ -1,0 +1,25 @@
+%h1 Listing request_sequence_properties
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Sequence
+      %th Date sequence
+      %th
+      %th
+      %th
+
+  %tbody
+    - @request_sequence_properties.each do |request_sequence_property|
+      %tr
+        %td= request_sequence_property.user
+        %td= request_sequence_property.sequence
+        %td= request_sequence_property.date_sequence
+        %td= link_to 'Show', request_sequence_property
+        %td= link_to 'Edit', edit_request_sequence_property_path(request_sequence_property)
+        %td= link_to 'Destroy', request_sequence_property, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Request sequence property', new_request_sequence_property_path

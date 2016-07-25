@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @property.user
+%p
+  %b Request property:
+  = @property.request_property
+%p
+  %b Register:
+  = @property.register
+%p
+  %b Repertory:
+  = @property.repertory
+%p
+  %b Date register:
+  = @property.date_register
+
+= link_to 'Edit', edit_property_path(@property)
+\|
+= link_to 'Back', properties_path

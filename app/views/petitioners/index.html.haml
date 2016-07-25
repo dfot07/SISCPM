@@ -1,0 +1,39 @@
+%h1 Listing petitioners
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Request property
+      %th Last name
+      %th Name
+      %th Document
+      %th Civil status
+      %th Address
+      %th Phone
+      %th Email
+      %th Infodigital
+      %th
+      %th
+      %th
+
+  %tbody
+    - @petitioners.each do |petitioner|
+      %tr
+        %td= petitioner.user
+        %td= petitioner.request_property
+        %td= petitioner.last_name
+        %td= petitioner.name
+        %td= petitioner.document
+        %td= petitioner.civil_status
+        %td= petitioner.address
+        %td= petitioner.phone
+        %td= petitioner.email
+        %td= petitioner.infodigital
+        %td= link_to 'Show', petitioner
+        %td= link_to 'Edit', edit_petitioner_path(petitioner)
+        %td= link_to 'Destroy', petitioner, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Petitioner', new_petitioner_path

@@ -1,0 +1,19 @@
+=render "layouts/navbar"
+
+%section#main-container
+  .container
+    .row
+      .col.s10.push-s1
+        .row
+          .col.m5.hide-on-small-only
+            = image_tag "logo.png", class: "logo"
+          .col.s12.m7
+            .row
+              .signup-box
+                %h1.platzigram Registro de la Propiedad y Mercantil del cantón La Troncal
+                %h2 Sistema Índices
+                %section
+                  =link_to new_user_session_path, class: "btn btn-fb" do
+                    <i class="medium material-icons left">perm_identity</i>Iniciar sesión
+
+=render "layouts/footer"

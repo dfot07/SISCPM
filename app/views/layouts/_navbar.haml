@@ -1,0 +1,15 @@
+.navbar-fixed
+  %nav.light-blue.accent-4
+    .nav-wrapper
+      =link_to "#", class: "brand-logo" do
+        =image_tag "logo.png", width: "60"
+      %ul.right.hide-on-down
+        -if current_user
+          %li
+            =link_to "Menú Principal", root_path
+          %li
+            =link_to "Cerrar Sesión", destroy_user_session_path, method: :delete
+        -else
+          %li
+            =link_to new_user_session_path do
+              <i class="medium material-icons left">perm_identity</i>Iniciar sesión

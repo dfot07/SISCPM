@@ -1,0 +1,29 @@
+%h1 Listing properties
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Request property
+      %th Register
+      %th Repertory
+      %th Date register
+      %th
+      %th
+      %th
+
+  %tbody
+    - @properties.each do |property|
+      %tr
+        %td= property.user
+        %td= property.request_property
+        %td= property.register
+        %td= property.repertory
+        %td= property.date_register
+        %td= link_to 'Show', property
+        %td= link_to 'Edit', edit_property_path(property)
+        %td= link_to 'Destroy', property, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Property', new_property_path

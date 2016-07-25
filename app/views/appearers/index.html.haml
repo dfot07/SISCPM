@@ -1,0 +1,29 @@
+%h1 Listing appearers
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Request property
+      %th Last name
+      %th Name
+      %th Civil status
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appearers.each do |appearer|
+      %tr
+        %td= appearer.user
+        %td= appearer.request_property
+        %td= appearer.last_name
+        %td= appearer.name
+        %td= appearer.civil_status
+        %td= link_to 'Show', appearer
+        %td= link_to 'Edit', edit_appearer_path(appearer)
+        %td= link_to 'Destroy', appearer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appearer', new_appearer_path

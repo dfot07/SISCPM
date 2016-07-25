@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @petitioner.user
+%p
+  %b Request property:
+  = @petitioner.request_property
+%p
+  %b Last name:
+  = @petitioner.last_name
+%p
+  %b Name:
+  = @petitioner.name
+%p
+  %b Document:
+  = @petitioner.document
+%p
+  %b Civil status:
+  = @petitioner.civil_status
+%p
+  %b Address:
+  = @petitioner.address
+%p
+  %b Phone:
+  = @petitioner.phone
+%p
+  %b Email:
+  = @petitioner.email
+%p
+  %b Infodigital:
+  = @petitioner.infodigital
+
+= link_to 'Edit', edit_petitioner_path(@petitioner)
+\|
+= link_to 'Back', petitioners_path

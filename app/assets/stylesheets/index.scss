@@ -1,0 +1,118 @@
+$secondary-color: #125688;
+
+
+body {
+	background: #fafafa;
+	color: #125688;
+	font-family: Montserrat;
+	display: flex;
+	min-height: 10vh;
+	flex-direction: column;
+}
+
+.font-size-print {
+	font-size: 1.2em;
+}
+
+th, td {
+	padding: 0px 0px;
+}
+
+.size-text {
+	font-size: 0.7em;
+}
+
+.font-size-m-print {
+	font-size: 0.8em;
+}
+
+.border-print {
+	border-bottom: 1px solid;
+}
+
+.border-top-print {
+	margin-top: 45px;
+	border-top: 1px solid;
+}
+
+.margin-top-print {
+	margin-top: 45px;
+}
+
+.margin-text {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.text-align-print {
+	text-align: justify;
+}
+
+#main-container {
+	margin: 30px auto;
+}
+
+.logo {
+	max-width: 100%;
+}
+
+.transform-uppercase {
+	text-transform: uppercase;
+}
+
+.site-footer {
+	text-transform: uppercase;
+	font-size: 12px;
+	flex: 1 0 auto;
+}
+
+.login-box,
+.signup-box {
+	background-color: white;
+	border: 1px solid #edeeee;
+	border-radius: 3px;
+	padding: 10px 0;
+	text-align: center;
+	
+}
+
+.signup-box .platzigram {
+	font-family: "Oleo Script";
+	font-size: 42px;
+}
+
+.signup-form {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.signup-box h2 {
+	color: #a5a7aa;
+	font-size: 1.2em;
+}
+
+.signup-box .btn.btn-fb {
+	background-color: #4090db;
+	font-size: .8em;
+}
+
+.signup-box .btn.btn-fb:hover {
+	background-color: #2d6599;
+}
+
+.signup-form .btn.btn-signup {
+	background-color: #125688;
+}
+
+.signup-box .btn.btn-ap {
+	background-color: #0097a9;
+	font-size: .8em;
+}
+
+.signup-box .btn.btn-ap:hover {
+	background-color: #00838f;
+}
+
+.table-v {
+	font-size: .7em;
+}

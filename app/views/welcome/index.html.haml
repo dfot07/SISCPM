@@ -1,0 +1,25 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3
+  .row
+    .col.s12.l8.offset-l2
+      .row
+        .col.s12.l8.offset-l2
+          %h1.center-align Bienvenidos
+      .row
+        -if current_user.email == "df_ot@hotmail.com"
+          .col.s4.l4
+            .card.blue.lighten-5
+              .card-content.blue-text.text-darken-2.center-align
+                %span.card-title
+                  %i{class: "large material-icons"} recent_actors
+                %h5 Solicitud Propiedad
+              .card-action.center-align.signup-box
+                .row
+                  =link_to "Nuevo", new_request_property_path, class: "btn btn-fb"
+                .row
+                  =link_to "Ver", request_properties_path, class: "btn btn-fb"
+        -else
+          %h5 Solicitud Mercantil
+        
+=render "layouts/footer"

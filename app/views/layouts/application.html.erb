@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de la Propiedad y Mercantil | Sistema RPMLT</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Oleo+Script' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <% flash.each do |type, message| %>
+    <div class="chip waves-effect waves-light btn-large">
+      <%= message %>
+      <i class="material-icons">close</i>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+
+</body>
+</html>

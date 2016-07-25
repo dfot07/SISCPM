@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  certificate: MyString
+  request_certificate: MyString
+  comment: MyString
+  sequence_request: 1
+  sequence_certificate: 1
+  date_sequence: 1
+  date_certificate: 1
+  other_type: MyString
+  other_certificate: MyString
+
+two:
+  user: two
+  certificate: MyString
+  request_certificate: MyString
+  comment: MyString
+  sequence_request: 1
+  sequence_certificate: 1
+  date_sequence: 1
+  date_certificate: 1
+  other_type: MyString
+  other_certificate: MyString

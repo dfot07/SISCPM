@@ -1,0 +1,39 @@
+%h1 Listing request_commercials
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Certificate
+      %th Request certificate
+      %th Comment
+      %th Sequence request
+      %th Sequence certificate
+      %th Date sequence
+      %th Date certificate
+      %th Other type
+      %th Other certificate
+      %th
+      %th
+      %th
+
+  %tbody
+    - @request_commercials.each do |request_commercial|
+      %tr
+        %td= request_commercial.user
+        %td= request_commercial.certificate
+        %td= request_commercial.request_certificate
+        %td= request_commercial.comment
+        %td= request_commercial.sequence_request
+        %td= request_commercial.sequence_certificate
+        %td= request_commercial.date_sequence
+        %td= request_commercial.date_certificate
+        %td= request_commercial.other_type
+        %td= request_commercial.other_certificate
+        %td= link_to 'Show', request_commercial
+        %td= link_to 'Edit', edit_request_commercial_path(request_commercial)
+        %td= link_to 'Destroy', request_commercial, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Request commercial', new_request_commercial_path

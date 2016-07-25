@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  certificate: MyString
+  request_certificate: MyString
+  comment: MyString
+  sequence_request: MyString
+  sequence_certificate: MyString
+
+two:
+  user: two
+  certificate: MyString
+  request_certificate: MyString
+  comment: MyString
+  sequence_request: MyString
+  sequence_certificate: MyString

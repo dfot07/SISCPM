@@ -1,0 +1,109 @@
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.hide-print
+      %ul
+        %li.col.s2.left
+          = link_to "Regresar", @request_property, class: "btn btn-ap"
+        %li.col.s2.right
+          %a{href: "javascript:window.print()", class: "btn btn-ap"} Imprimir
+    .col.s12
+      .col.s4.left
+        -if @request_property.sequence_request >=1000
+          %p.font-size-print <b>Solicitud No: #{@request_property.created_at.strftime("%Y%m%d")}CP0#{@request_property.sequence_request}</b>
+        -else
+          -if @request_property.sequence_request >=100
+            %p.font-size-print <b>Solicitud No: #{@request_property.created_at.strftime("%Y%m%d")}CP00#{@request_property.sequence_request}</b>
+          -else
+            -if @request_property.sequence_request >=10
+              %p.font-size-print <b>Solicitud No: #{@request_property.created_at.strftime("%Y%m%d")}CP000#{@request_property.sequence_request}</b>
+            -else
+              -if @request_property.sequence_request >=1
+                %p.font-size-print <b>Solicitud No: #{@request_property.created_at.strftime("%Y%m%d")}CP0000#{@request_property.sequence_request}</b>
+      .col.s4.center
+        = image_tag "logo.png", class: "logo", width: "40%"
+      .col.s3.right
+        %p.font-size-print <b>Año: #{@request_property.date_sequence}</b>
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h6 <b>REGISTRO DE LA PROPIEDAD Y MERCANTIL DEL CANTÓN LA TRONCAL</b>
+            %p SOLICITUD DE ENTRADA Y TRÁMITE - PROPIEDAD
+          .col.s12
+            %p.left.size-text.margin-text <b>No. de Comprobante: _________</b>
+          .col.s12
+            %p.text-align-print.size-text De acuerdo con lo que dispone el inciso Cinco del Art. 6 de la Ley de Sistema Nacional de Datos Públicos, Señor Registrador de la Propiedad y Mercantil del Cantón La Troncal, Provincia del Cañar; por medio de la presente solicito a usted me extienda el <b>CERTIFICADO</b> de:
+            -if @request_property.certificate == "OTROS"
+              %p.border-print <b>#{@request_property.other_type}</b>
+            -else
+              %p.border-print <b>#{@request_property.certificate}</b>
+          .col.s12
+            -@request_property.property.each do |property|
+              %p.text-align-print.size-text.margin-text De la propiedad inscrita bajo el número: <b>#{property.register}</b>, repertorio: <b>#{property.repertory}</b>, con fecha: <b>#{property.date_register}</b>
+          .col.s12
+            %p.left.size-text.margin-text A favor:
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Compareciente(s)
+                  %th Estado Civil
+
+              %tbody
+                -@request_property.appearer.each do |appearer|
+                  %tr
+                    %td= appearer.last_name
+                    %td= appearer.civil_status
+
+          .col.s12.valign-wrapper
+            .col.s4
+              %p.left.size-text.margin-text.valign Certificado requerido para:
+            .col.s8
+              -if @request_property.request_certificate == "OTROS"
+                %p.left.valign.border-print <b>#{@request_property.other_certificate}</b>
+              -else
+                %p.left.valign.border-print <b>#{@request_property.request_certificate}</b>
+
+          .col.s12
+            %p.left.size-text.margin-text <b>Observación</b> (sírvase indicar si obtuvo certicación anterior):
+          .col.s12.border-print.size-text
+            %ul
+              %li <b>#{@request_property.comment}</b>
+          .col.s12.center-align
+            %h5 DATOS DEL SOLICITANTE
+            %table.table-v.bordered.highlight.responsive-table.left
+              -@request_property.petitioner.each do |petitioner|
+                %tr
+                  %th <b>Nombres y Apellidos:</b>
+                  %td #{petitioner.last_name} #{petitioner.name}
+                %tr
+                  %th <b>Cédula de Identidad:</b>
+                  %td #{petitioner.document}
+                %tr
+                  %th <b>Estado Civil:</b>
+                  %td #{petitioner.civil_status}
+                %tr
+                  %th <b>Dirección Domiciliaria:</b>
+                  %td #{petitioner.address}
+                %tr
+                  %th <b>Teléfono:</b>
+                  %td #{petitioner.phone}
+                %tr
+                  %th <b>Email:</b>
+                  %td #{petitioner.address}
+                %tr
+                  %th <b>Código Infodigital:</b>
+                  %td #{petitioner.infodigital}
+              %tr
+                %th <b>Lugar y Fecha de la solicitud:</b>
+                %td La Troncal, #{@request_property.created_at.strftime("%Y/%m/%d")}
+          .col.s12
+            .col.3.right.border-top-print.size-text
+              %p Firma del Solicitante
+          .col.s12
+            %p.text-align-print.size-text.margin-text <b>Nota:</b> Los datos asentados en esta solicitud son responsabilidad del compareciente. Esta solicitud se presenta en original, debidamente firmada y no será válidad si contiene alteraciones, tachaduras o enmendaduras.
+          .col.s12.margin-top-print
+            .col.3.left.font-size-m-print
+              %p Fecha de Entrega: _______________
+            .col.3.right.font-size-m-print
+              %p No. de Certificado: ___________
