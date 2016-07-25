@@ -7,7 +7,7 @@ class RequestPropertiesController < ApplicationController
   # GET /request_properties
   # GET /request_properties.json
   def index
-    @request_properties = RequestProperty.all
+    @request_properties = current_user.request_property
   end
 
   # GET /request_properties/1

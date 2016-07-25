@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725135139) do
+ActiveRecord::Schema.define(version: 20160725180615) do
 
   create_table "appearers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 20160725135139) do
     t.index ["user_id"], name: "index_property_certificate_sequences_on_user_id", using: :btree
   end
 
+  create_table "request_commercials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "certificate"
+    t.string   "request_certificate"
+    t.string   "comment"
+    t.integer  "sequence_request"
+    t.integer  "sequence_certificate"
+    t.integer  "date_sequence"
+    t.integer  "date_certificate"
+    t.string   "other_type"
+    t.string   "other_certificate"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["user_id"], name: "index_request_commercials_on_user_id", using: :btree
+  end
+
   create_table "request_properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "certificate"
@@ -103,4 +119,5 @@ ActiveRecord::Schema.define(version: 20160725135139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "request_commercials", "users"
 end
