@@ -120,6 +120,6 @@
                     %td= petitioner.phone
                     %td= petitioner.email
                     %td= petitioner.infodigital
-                    %td= link_to 'Editar', edit_request_property_appearer_path(@request_property, petitioner.id)
-                    %td= link_to 'Eliminar', request_property_appearer_path(@request_property, petitioner.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+                    %td= link_to 'Editar', edit_request_property_petitioner_path(@request_property, petitioner.id)
+                    %td= link_to 'Eliminar', request_property_petitioner_path(@request_property, petitioner.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 =render "layouts/footer"
