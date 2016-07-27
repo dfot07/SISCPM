@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725180615) do
+ActiveRecord::Schema.define(version: 20160727041721) do
+
+  create_table "appearer_acts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "request_act_id"
+    t.string   "name"
+    t.string   "type_appearer"
+    t.string   "document"
+    t.string   "class_appearer"
+    t.text     "represent_appearer", limit: 65535
+    t.string   "type_act"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["request_act_id"], name: "index_appearer_acts_on_request_act_id", using: :btree
+    t.index ["user_id"], name: "index_appearer_acts_on_user_id", using: :btree
+  end
 
   create_table "appearers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -61,6 +76,21 @@ ActiveRecord::Schema.define(version: 20160725180615) do
     t.index ["user_id"], name: "index_property_certificate_sequences_on_user_id", using: :btree
   end
 
+  create_table "request_acts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "type_act"
+    t.date     "date_act"
+    t.string   "description_act"
+    t.string   "amount_act"
+    t.string   "entity"
+    t.string   "city_entity"
+    t.integer  "sequence"
+    t.integer  "date_sequence"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_request_acts_on_user_id", using: :btree
+  end
+
   create_table "request_commercials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "certificate"
@@ -102,6 +132,15 @@ ActiveRecord::Schema.define(version: 20160725180615) do
     t.index ["user_id"], name: "index_request_sequence_properties_on_user_id", using: :btree
   end
 
+  create_table "sequence_acts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "sequence"
+    t.integer  "date_sequence"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_sequence_acts_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -119,5 +158,8 @@ ActiveRecord::Schema.define(version: 20160725180615) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "appearer_acts", "request_acts"
+  add_foreign_key "request_acts", "users"
   add_foreign_key "request_commercials", "users"
+  add_foreign_key "sequence_acts", "users"
 end

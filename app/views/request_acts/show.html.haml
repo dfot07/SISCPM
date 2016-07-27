@@ -1,0 +1,106 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Ingreso No.- #{@request_act.sequence}
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Usuario
+                  %th Tipo de Acto
+                  %th Fecha del Acto
+                  %th Descripcion
+                  %th Cuantia
+                  %th Notaria
+                  %th Canton de Notaria
+                  %th Secuencia
+                  %th
+                  %th
+                  %th
+              %tbody
+                %tr
+                  %td= @request_act.user.email
+                  %td= @request_act.type_act
+                  %td= @request_act.date_act
+                  %td= @request_act.description_act
+                  %td= @request_act.amount_act
+                  %td= @request_act.entity
+                  %td= @request_act.city_entity
+                  %td= "#{@request_act.sequence} - #{@request_act.date_sequence}"
+                  %td= link_to 'Ver', @request_act
+                  %td= link_to 'Editar', edit_request_act_path(@request_act)
+                  %td
+                    = link_to @request_act, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+  .row
+    .col.s12
+      %ul
+        %li.col.s4.left
+          = link_to "Regresar", root_path, class: "btn btn-ap"
+        %li.col.s4.center
+          = link_to 'Compareciente', new_request_act_appearer_act_path(@request_act), class: "btn btn-ap"
+        %li.col.s4.right
+          = link_to print_request_act_path(@request_act), class: "btn btn-ap" do
+            <i class="small material-icons center">print</i>
+  
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h5 Datos Otorgantes
+          .col.s12.transform-uppercase.center-align
+            %h6 OTORGADO POR
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Compareciente(s)
+                  %th Tipo Interviniente
+                  %th Cedula
+                  %th Calidad
+                  %th Persona que le representa
+                  %th
+                  %th
+
+              %tbody
+                -@request_act.appearer_act.each do |appearer|
+                  -if(appearer.type_act == "O")
+                    %tr
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.document
+                      %td= appearer.class_appearer
+                      %td= appearer.represent_appearer
+                      %td= link_to 'Editar ', edit_request_act_appearer_act_path(@request_act, appearer.id)
+                      %td= link_to 'Eliminar', request_act_appearer_act_path(@request_act, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+          .col.s12.transform-uppercase.center-align
+            %h6 A FAVOR DE
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th Compareciente(s)
+                  %th Tipo Interviniente
+                  %th Cedula
+                  %th Calidad
+                  %th Persona que le representa
+                  %th
+                  %th
+
+              %tbody
+                -@request_act.appearer_act.each do |appearer|
+                  -if(appearer.type_act == "A")
+                    %tr
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.document
+                      %td= appearer.class_appearer
+                      %td= appearer.represent_appearer
+                      %td= link_to 'Editar', edit_request_act_appearer_act_path(@request_act, appearer.id)
+                      %td= link_to 'Eliminar', request_act_appearer_act_path(@request_act, appearer.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+ 
+=render "layouts/footer"

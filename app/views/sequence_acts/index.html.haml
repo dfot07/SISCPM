@@ -1,0 +1,25 @@
+%h1 Listing sequence_acts
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Sequence
+      %th Date sequence
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sequence_acts.each do |sequence_act|
+      %tr
+        %td= sequence_act.user
+        %td= sequence_act.sequence
+        %td= sequence_act.date_sequence
+        %td= link_to 'Show', sequence_act
+        %td= link_to 'Edit', edit_sequence_act_path(sequence_act)
+        %td= link_to 'Destroy', sequence_act, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sequence act', new_sequence_act_path

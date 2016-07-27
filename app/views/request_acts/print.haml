@@ -1,0 +1,55 @@
+.container.grey.lighten-3.signup-box.background-print
+  .row
+    .col.s12.hide-print
+      %ul
+        %li.col.s2.left
+          = link_to "Regresar", @request_act, class: "btn btn-ap"
+        %li.col.s2.right
+          %a{href: "javascript:window.print()", class: "btn btn-ap"} Imprimir
+    .col.s12
+      .col.s4.left
+        -if @request_act.sequence >= 1000
+          %p.font-size-print <b>Ingreso No: #{@request_act.created_at.strftime("%Y%m%d")}0#{@request_act.sequence}</b>
+        -else
+          -if @request_act.sequence >=100
+            %p.font-size-print <b>Ingreso No: #{@request_act.created_at.strftime("%Y%m%d")}00#{@request_act.sequence}</b>
+          -else
+            -if @request_act.sequence >=10
+              %p.font-size-print <b>Ingreso No: #{@request_act.created_at.strftime("%Y%m%d")}000#{@request_act.sequence}</b>
+            -else
+              -if @request_act.sequence >=1
+                %p.font-size-print <b>Ingreso No: #{@request_act.created_at.strftime("%Y%m%d")}0000#{@request_act.sequence}</b>
+      .col.s4.center
+        = image_tag "logo.png", class: "logo", width: "40%"
+      .col.s3.right
+        %p.font-size-print <b>Año: #{@request_act.date_sequence}</b>
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %h6 <b>REGISTRO DE LA PROPIEDAD Y MERCANTIL DEL CANTÓN LA TRONCAL</b>
+            %p SOLICITUD DE ENTRADA Y TRÁMITE - PROPIEDAD
+          .col.s12
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th <b>ACTO O CONTRATO</b>
+              %tbody
+                %tr
+                  %td= @request_act.type_act
+                %tr
+                  %th <b>Fecha del Acto:</b>
+                  %td #{@request_act.date_act}
+                %tr
+                  %th <b>Descripcion del Acto:</b>
+                  %td #{@request_act.description_act}
+                %tr
+                  %th <b>Cuantía del Acto:</b>
+                  %td #{@request_act.amount_act}
+                %tr
+                  %th <b>Notaria/Juzgado/Entidad:</b>
+                  %td #{@request_act.entity}
+                %tr
+                  %th <b>Cantón de Notaria/Juzgado/Entidad:</b>
+                  %td #{@request_act.city_entity}

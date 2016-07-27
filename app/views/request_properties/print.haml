@@ -8,7 +8,7 @@
           %a{href: "javascript:window.print()", class: "btn btn-ap"} Imprimir
     .col.s12
       .col.s4.left
-        -if @request_property.sequence_request >=1000
+        -if @request_property.sequence_request >= 1000
           %p.font-size-print <b>Solicitud No: #{@request_property.created_at.strftime("%Y%m%d")}0#{@request_property.sequence_request}</b>
         -else
           -if @request_property.sequence_request >=100

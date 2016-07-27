@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @appearer_act.user
+%p
+  %b Request act:
+  = @appearer_act.request_act
+%p
+  %b Name:
+  = @appearer_act.name
+%p
+  %b Type appearer:
+  = @appearer_act.type_appearer
+%p
+  %b Document:
+  = @appearer_act.document
+%p
+  %b Class appearer:
+  = @appearer_act.class_appearer
+%p
+  %b Represent appearer:
+  = @appearer_act.represent_appearer
+%p
+  %b Type:
+  = @appearer_act.type_act
+
+= link_to 'Edit', edit_appearer_act_path(@appearer_act)
+\|
+= link_to 'Back', appearer_acts_path

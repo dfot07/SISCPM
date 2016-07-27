@@ -1,0 +1,58 @@
+.container.signup-box
+  .row
+    .col.s12.l12
+      = simple_form_for [@request_act, @appearer_act] do |f|
+        -if @appearer_act.errors.any?
+          #error_explanation
+            %h3.chip
+              = "#{@appearer_act.errors.count} errores encontrados:"
+              <i class="material-icons">close</i>
+            %ul
+              -@appearer_act.errors.full_messages.each do |msg|
+                %li.chip.waves-effect.waves-light.btn-large
+                  =msg
+                  <i class="material-icons">close</i>
+        .row
+          .col.s12.l12
+            .section
+              .row
+                .col.s12
+                  .input-field.col.s12
+                    %br
+                    %label{for: "#{:type_act}"} Tipo de Ortogante:
+                    %br
+                    -if @appearer_act.type_act
+                      -if @appearer_act.type_act == "O"
+                        %select.browser-default{name: "appearer_act[type_act]", id:"appearer_act_type_act"}
+                          %option{value: "O", disabled:"", selected:""} OTORGADO POR
+                      -else
+                        -if @appearer_act.type_act == "A"
+                          %select.browser-default{name: "appearer_act[type_act]", id:"appearer_act_type_act"}
+                            %option{value: "A", disabled:"", selected:""} A FAVOR DE
+                    -else
+                      %select.browser-default{name: "appearer_act[type_act]", id:"appearer_act_type_act"}
+                        %option{value: "", disabled:"", selected:""} Seleccionar...
+                        %option{value: "O"} OTORGADO POR
+                        %option{value: "A"} A FAVOR DE
+                  .input-field.col.s12
+                    =f.text_field :name
+                    %label{for: "#{:name}", class: "active"} Compareciente:
+                  .input-field.col.s12 
+                    =f.text_field :type_appearer
+                    %label{for: "#{:type_appearer}", class: "active"} Tipo de Interviniente:
+                  .input-field.col.s12 
+                    =f.text_field :document
+                    %label{for: "#{:document}", class: "active"} Cédula/RUC/Pasaporte:
+                  .input-field.col.s12 
+                    =f.text_field :class_appearer
+                    %label{for: "#{:class_appearer}", class: "active"} Calidad de Compareciente:
+                  .input-field.col.s12 
+                    =f.text_field :represent_appearer
+                    %label{for: "#{:represent_appearer}", class: "active"} Persona que le representa/Persona que represeta:
+
+              .row
+                .col.s12.l6
+                  %button{class:"btn btn-fb", type:"submit", name:"action"}
+                    Guardar<i class="material-icons right">send</i>
+                .col.s12.l6
+                  =link_to "Cancelar", @request_act, class: "btn btn-fb"

@@ -10,5 +10,8 @@ class User < ApplicationRecord
   has_many :petitioner
   has_many :request_sequence_property
   has_many :property_certificate_sequence
+  has_many :sequence_act
+  has_many :request_act
+  has_many :appearer_act
 
 end

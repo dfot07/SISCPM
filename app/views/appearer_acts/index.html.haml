@@ -1,0 +1,35 @@
+%h1 Listing appearer_acts
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Request act
+      %th Name
+      %th Type appearer
+      %th Document
+      %th Class appearer
+      %th Represent appearer
+      %th Type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appearer_acts.each do |appearer_act|
+      %tr
+        %td= appearer_act.user
+        %td= appearer_act.request_act
+        %td= appearer_act.name
+        %td= appearer_act.type_appearer
+        %td= appearer_act.document
+        %td= appearer_act.class_appearer
+        %td= appearer_act.represent_appearer
+        %td= appearer_act.type_act
+        %td= link_to 'Show', appearer_act
+        %td= link_to 'Edit', edit_appearer_act_path(appearer_act)
+        %td= link_to 'Destroy', appearer_act, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appearer act', new_appearer_act_path

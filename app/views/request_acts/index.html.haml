@@ -1,0 +1,46 @@
+=render "layouts/navbar"
+
+.container.grey.lighten-3.signup-box
+  .row
+    .col.s12.l12
+      .row
+        .col.s12.l12
+          %h1.center-align Ingresos de Actos o Contratos
+        .col.s12.l12
+          = link_to new_request_act_path, class: "btn btn-fb" do
+            <i class="medium material-icons left">note_add</i>Nuevo Ingreso
+      .row
+        .col.s6.l12
+          %table.table-v.striped.highlight.centered.responsive-table
+            %thead
+              %tr
+                %th Usuario
+                %th Tipo de Acto
+                %th Fecha del Acto
+                %th Descripcion
+                %th Cuantia
+                %th Notaria
+                %th Canton de Notaria
+                %th Secuencia
+                %th
+                %th
+                %th
+
+            %tbody
+              - @request_acts.each do |request_act|
+                %tr
+                  %td= request_act.user.email
+                  %td= request_act.type_act
+                  %td= request_act.date_act
+                  %td= request_act.description_act
+                  %td= request_act.amount_act
+                  %td= request_act.entity
+                  %td= request_act.city_entity
+                  %td= "#{request_act.sequence} - #{request_act.date_sequence}"
+                  %td= link_to 'Ver', request_act
+                  %td= link_to 'Editar', edit_request_act_path(request_act)
+                  %td
+                    = link_to request_act, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+                      <i class="small material-icons left">delete</i>
+
+=render "layouts/footer"

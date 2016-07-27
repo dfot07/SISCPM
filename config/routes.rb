@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :sequence_acts
+    
   resources :request_commercials
   resources :property_certificate_sequences
   resources :request_sequence_properties
@@ -8,6 +10,15 @@ Rails.application.routes.draw do
     resources :appearers
     resources :petitioners
     resources :properties
+
+    member do
+      get :print
+    end
+
+  end
+
+  resources :request_acts do
+    resources :appearer_acts
 
     member do
       get :print
