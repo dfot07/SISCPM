@@ -1,5 +1,5 @@
 class RequestActsController < ApplicationController
-  before_action :set_request_act, only: [:show, :edit, :update, :destroy]
+  before_action :set_request_act, only: [:show, :edit, :update, :destroy, :print]
   before_action :set_sequence_act
   before_action :authenticate_user!, except: [:index, :show, :print]
 
@@ -81,6 +81,6 @@ class RequestActsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_act_params
-      params.require(:request_act).permit(:user_id, :type_act, :date_act, :description_act, :amount_act, :entity, :city_entity, :sequence, :date_sequence)
+      params.require(:request_act).permit(:user_id, :type_act, :date_act, :num_act, :description_act, :amount_act, :entity, :city_entity, :sequence, :date_sequence)
     end
 end

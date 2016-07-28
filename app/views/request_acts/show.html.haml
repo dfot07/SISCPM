@@ -14,11 +14,11 @@
                   %th Tipo de Acto
                   %th Fecha del Acto
                   %th Descripcion
+                  %th Número
                   %th Cuantia
                   %th Notaria
                   %th Canton de Notaria
                   %th Secuencia
-                  %th
                   %th
                   %th
               %tbody
@@ -27,11 +27,11 @@
                   %td= @request_act.type_act
                   %td= @request_act.date_act
                   %td= @request_act.description_act
+                  %td= @request_act.num_act
                   %td= @request_act.amount_act
                   %td= @request_act.entity
                   %td= @request_act.city_entity
                   %td= "#{@request_act.sequence} - #{@request_act.date_sequence}"
-                  %td= link_to 'Ver', @request_act
                   %td= link_to 'Editar', edit_request_act_path(@request_act)
                   %td
                     = link_to @request_act, :method => :delete, :data => { :confirm => 'Are you sure?' } do

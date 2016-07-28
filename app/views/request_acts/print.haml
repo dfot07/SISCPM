@@ -29,21 +29,24 @@
         .row
           .col.s12.transform-uppercase.center-align
             %h6 <b>REGISTRO DE LA PROPIEDAD Y MERCANTIL DEL CANTÓN LA TRONCAL</b>
-            %p SOLICITUD DE ENTRADA Y TRÁMITE - PROPIEDAD
+            %p INGRESO DE ACTOS/CONTRATOS
           .col.s12
-            %table.table-v.bordered.highlight.centered.responsive-table
+            %table.bordered.highlight.centered.responsive-table
               %thead
                 %tr
-                  %th <b>ACTO O CONTRATO</b>
+                  %th{colspan: "2"} <b>ACTO O CONTRATO</b>
               %tbody
                 %tr
-                  %td= @request_act.type_act
+                  %td{colspan: "2"}= @request_act.type_act
                 %tr
                   %th <b>Fecha del Acto:</b>
                   %td #{@request_act.date_act}
                 %tr
                   %th <b>Descripcion del Acto:</b>
                   %td #{@request_act.description_act}
+                %tr
+                  %th <b>Número del Acto:</b>
+                  %td #{@request_act.num_act}
                 %tr
                   %th <b>Cuantía del Acto:</b>
                   %td #{@request_act.amount_act}
@@ -53,3 +56,71 @@
                 %tr
                   %th <b>Cantón de Notaria/Juzgado/Entidad:</b>
                   %td #{@request_act.city_entity}
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %p <b>OTORGADO POR</b>
+          .col.s12
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th <b>Compareciente(s)</b>
+                  %th <b>Tipo Interviniente</b>
+                  %th <b>Cedula</b>
+                  %th <b>Calidad</b>
+                  %th <b>Persona que la representa</b> 
+              %tbody
+                -@request_act.appearer_act.each do |appearer|
+                  -if(appearer.type_act == "O")
+                    %tr
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.document
+                      %td= appearer.class_appearer
+                      %td= appearer.represent_appearer
+
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12.transform-uppercase.center-align
+            %p <b>A FAVOR DE</b>
+          .col.s12
+            %table.table-v.bordered.highlight.centered.responsive-table
+              %thead
+                %tr
+                  %th <b>Compareciente(s)</b>
+                  %th <b>Tipo Interviniente</b>
+                  %th <b>Cedula</b>
+                  %th <b>Calidad</b>
+                  %th <b>Persona que representa</b> 
+              %tbody
+                -@request_act.appearer_act.each do |appearer|
+                  -if(appearer.type_act == "A")
+                    %tr
+                      %td= appearer.name
+                      %td= appearer.type_appearer
+                      %td= appearer.document
+                      %td= appearer.class_appearer
+                      %td= appearer.represent_appearer
+  .row
+    .col.s12
+      .container
+        .row
+          .col.s12
+            %table.bordered.highlight.centered.responsive-table
+              %tr
+                %td{rowspan:"2", style: "vertical-align: bottom;"} Documento de uso Interno
+                %td{rowspan:"2", style: "vertical-align: bottom;"} Funcionario(a) Responsable:
+                %td{style: "padding-top: 60px;"}
+              %tr
+                -if current_user.email == "jatariguana@rpmlt.gob.ec"
+                  %td Sra. Johanna Atariguana
+                -else
+                  -if current_user.email == "jochoa@rpmlt.gob.ec"
+                    %td Ing. Jasmani Ochoa
+                  -else
+                    -if current_user.email == "df_ot@hotmail.com"
+                      %td Ing. Diego Ortega
